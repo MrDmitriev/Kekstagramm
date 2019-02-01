@@ -9,11 +9,12 @@
 	var openPopup = function (photo) {
 		bigPictureContainer.querySelector(".big-picture__img").querySelector("img").src = photo.url;
 		bigPictureContainer.querySelector(".big-picture__img").querySelector("img").alt = photo.url;
+		bigPictureContainer.querySelector(".likes-count").textContent = photo.likes; 
 		renderCommentsList(photo);
 		bigPictureContainer.classList.remove("hidden");
 		document.querySelector("body").classList.add("modal-open");
-		cancelButton.addEventListener("click", window.popup.cancelBigPicture);
-		document.addEventListener("keydown", window.popup.onPopupEscPress);
+		cancelButton.addEventListener("click", cancelBigPicture);
+		document.addEventListener("keydown", onPopupEscPress);
 	};
 
 	var renderComment = function (photo) {
@@ -55,9 +56,6 @@
 	};
 
 	window.popup = {
-		renderCommentsList: renderCommentsList,
-		onPopupEscPress: onPopupEscPress,
-		cancelBigPicture: cancelBigPicture,
 		open: openPopup
 	};
 
