@@ -6,6 +6,7 @@
 	var uploadFormButton = document.querySelector("#upload-file");
 	var editionForm = uploadContainer.querySelector(".img-upload__overlay");
 	var editionFormCancelButton = document.querySelector("#upload-cancel");
+	var form = document.querySelector("#upload-select-image");
 	
 	var onPopupEscPress = function (evt) {
 		if (evt.keyCode === ESC_KEYCODE) {
@@ -13,11 +14,16 @@
 		}
 	};
 
+	var uploadData = function () {
+		cancelEditionForm();
+	};
+
 	var openEditionForm = function () {
 		editionForm.classList.remove("hidden");
 		editionFormCancelButton.addEventListener("click", cancelEditionForm);
 		document.addEventListener("keydown", onPopupEscPress);
 		window.editPic.setScaleValue(DEFAULT_SCALE);
+		window.effects.shift();
 	};
 
 	var cancelEditionForm = function () {
@@ -25,6 +31,11 @@
 		document.removeEventListener("keydown", onPopupEscPress);
 		editionFormCancelButton.removeEventListener("click", cancelEditionForm);
 	};
+
+	form.addEventListener("submit", function (evt) {
+		window.dataUpload(new FormData(form), uploadData, window.messages.renderError);
+		evt.preventDefault();
+	});
 
 	uploadFormButton.addEventListener("change", openEditionForm);
 })();

@@ -2,7 +2,7 @@
 (function () {
 	var SUCCESS_UPLOAD = 200;
 	var TIMEOUT_VALUE = 1000;
-	var URL = "https://js.dump.academy/keksobooking";
+	var URL = "https://js.dump.academy/kekstagram";
 
 	window.dataUpload = function (data, onSuccess, onError) {
 		var xhr = new XMLHttpRequest();

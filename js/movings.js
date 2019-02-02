@@ -1,9 +1,16 @@
 "use strict";
 (function () {
+	var editFormContainer = document.querySelector(".img-upload__preview-container");
+	var effectLevelDepth = editFormContainer.querySelector(".effect-level__depth");
+	var effectLevelPin = editFormContainer.querySelector(".effect-level__pin");
+	var effectLevelValue = editFormContainer.querySelector(".effect-level__value");
+
+	var moveEffectLine = function (value) {
+		var correctedValue = value + "%";
+		effectLevelDepth.style.width = correctedValue;
+	};
+
 	var moveEffectLevelPin = function () {
-		var editFormContainer = document.querySelector(".img-upload__preview-container");
-		var effectLevelDepth = editFormContainer.querySelector(".effect-level__depth");
-		var effectLevelPin = editFormContainer.querySelector(".effect-level__pin");
 
 		effectLevelPin.addEventListener("mousedown", function (evt) {
 			evt.preventDefault();
@@ -34,8 +41,11 @@
 					newCoordX = lineLimitLeft;
 				}
 
+				var sliderValue = 100 * newCoordX / lineLimitRight;
 				effectLevelPin.style.left = newCoordX + "px";
-				effectLevelDepth.style.width = 100 * newCoordX/lineLimitRight + "%";
+				moveEffectLine(sliderValue);
+				window.effects.addEffect(sliderValue);
+				effectLevelValue.value = Math.round(sliderValue) + "";
 
 			};
 

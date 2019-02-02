@@ -16,8 +16,8 @@
 	};
 
 	var setPictureScale = function (value) {
-		picture.style.transform = "scale(" + value/100 + ")";
-	};
+		picture.style.transform = "scale(" + value / 100 + ")";
+	}; 
 
 	var onBiggerButtonClick = function () {
 		var currentValue = scaleValue.value;
