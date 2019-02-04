@@ -7,6 +7,25 @@
 	var editionForm = uploadContainer.querySelector(".img-upload__overlay");
 	var editionFormCancelButton = document.querySelector("#upload-cancel");
 	var form = document.querySelector("#upload-select-image");
+	var FILE_TYPES = ["gif", "jpg", "jpeg", "png"];
+	var preview = uploadContainer.querySelector(".img-upload__preview").querySelector("img");
+
+	uploadFormButton.addEventListener("change", function () {
+		var file = uploadFormButton.files[0];
+		var fileName = file.name.toLowerCase();
+
+		var matches = FILE_TYPES.some( function (it) {
+			return fileName.endsWith(it);
+		});
+
+		if (matches) {
+			var reader = new FileReader(); 
+			reader.addEventListener("load", function () {
+				preview.src = reader.result; 
+			});
+			reader.readAsDataURL(file);
+		}
+	});
 	
 	var onPopupEscPress = function (evt) {
 		if (evt.keyCode === ESC_KEYCODE) {
