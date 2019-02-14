@@ -5,11 +5,6 @@
 	var effectLevelPin = editFormContainer.querySelector(".effect-level__pin");
 	var effectLevelValue = editFormContainer.querySelector(".effect-level__value");
 
-	var moveEffectLine = function (value) {
-		var correctedValue = value + "%";
-		effectLevelDepth.style.width = correctedValue;
-	};
-
 	var moveEffectLevelPin = function () {
 
 		effectLevelPin.addEventListener("mousedown", function (evt) {
@@ -43,7 +38,7 @@
 
 				var sliderValue = 100 * newCoordX / lineLimitRight;
 				effectLevelPin.style.left = newCoordX + "px";
-				moveEffectLine(sliderValue);
+				effectLevelDepth.style.width = newCoordX + "px";
 				window.effects.addEffect(sliderValue);
 				effectLevelValue.value = Math.round(sliderValue) + "";
 

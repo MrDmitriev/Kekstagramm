@@ -1,7 +1,8 @@
 "use strict";
 (function () {
 
-	var FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png'];
+
+	var FILE_TYPES = ["gif", "jpg", "jpeg", "png"];
 	var fileChooser = document.querySelector("#upload-file");
 	var preview = document.querySelector(".img-upload__preview");
 
@@ -20,5 +21,5 @@
 			});
 			reader.readAsDataURL(file);
 		}
-	})
+	});
 })();

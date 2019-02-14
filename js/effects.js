@@ -10,7 +10,7 @@
 	};
 	var HEAT_INTERVAL = HEAT_LIMIT.MAX - HEAT_LIMIT.MIN;
 	var PHOBOS_INTERVAL = PHOBOS_LIMIT.MAX - PHOBOS_LIMIT.MIN;
-	var DEFAULT_EFFECT_LEVEL = 100;
+	var DEFAULT_EFFECT_LEVEL = 30;
 	var editFormContainer = document.querySelector(".img-upload__preview-container");
 	var effectLevelDepth = editFormContainer.querySelector(".effect-level__depth");
 	var effectLevelPin = editFormContainer.querySelector(".effect-level__pin");
@@ -27,8 +27,8 @@
 
 	var shiftEffect = function () {
 		effectLine.classList.remove("hidden");
-		effectLevelDepth.style.width = "100%";
-		effectLevelPin.style.left = effectLevelPin.offsetParent.clientWidth + "px";
+		effectLevelDepth.style.width = DEFAULT_EFFECT_LEVEL + "%";
+		effectLevelPin.style.left = DEFAULT_EFFECT_LEVEL + "%";
 		addEffect(DEFAULT_EFFECT_LEVEL);
 	};
 
